@@ -1,0 +1,30 @@
+{
+  "name": "team-trip",
+  "version": "1.0.0",
+  "description": "Trip Expense Administrator Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielrsantana/team-trip.git"
+  },
+  "keywords": [
+    "trip",
+    "budget",
+    "manager"
+  ],
+  "author": "Daniel Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielrsantana/team-trip/issues"
+  },
+  "homepage": "https://github.com/danielrsantana/team-trip#readme",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "typescript": "^3.7.5"
+  }
+}
