@@ -1,16 +1,14 @@
 import { User } from './user.model';
 
-export type Expense = {
+export type Credit = {
   assignedUserId: string;
-  isShared: boolean;
-  categoryId: string;
   currency: string;
   date: string;
   description: string;
   id: string;
   image: string;
   name: string;
-  tripId: string; 
+  tripId: string;
   userId: string;
   value: string;
 };
