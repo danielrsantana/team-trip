@@ -5,9 +5,8 @@ import CreditType from './credit.type';
 import ExpenseType from './expense.type';
 import TripType from './trip.type';
 import UserType from './user.type';
-import HelloType from './hello.type';
 
-const types = [CategoryType, CreditType, ExpenseType, TripType, UserType, HelloType];
+const types = [CategoryType, CreditType, ExpenseType, TripType, UserType];
 
 const mergedTypes = mergeTypes(types, { all: true });
 

@@ -1,6 +1,6 @@
 export default `
   type Credit {
-    id: ID
+    _id: ID
     assignedUserId: String
     currency: String
     date: String
@@ -13,7 +13,7 @@ export default `
   }
 
   input CreditInput {
-    id: ID
+    id: String
     assignedUserId: String
     currency: String
     date: String
@@ -26,13 +26,13 @@ export default `
   }
 
   type Query {
-    getCredit (id: ID!): Credit
-    listCredits (tripId: ID!): [Credit]
+    getCredit (id: String!): Credit
+    listCredits (tripId: String!): [Credit]
   }
 
   type Mutation {
     addCredit(credit:CreditInput!): Credit
-    editCredit(credit:CreditInput!): Credit
-    removeCredit(id: ID!): Credit
+    deleteCredit(id: String!): Boolean!
+    editCredit(filter:CreditInput!, credit:CreditInput!): Boolean!
   }
 `;

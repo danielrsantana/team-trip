@@ -1,6 +1,6 @@
 export default `
   type User {
-    id: ID
+    _id: ID
     currency: String
     email: String
     image: String
@@ -8,7 +8,7 @@ export default `
   }
 
   input UserInput {
-    id: ID
+    id: String
     currency: String
     email: String
     image: String
@@ -16,13 +16,13 @@ export default `
   }
 
   type Query {
-    getUser (id: ID!): User
-    listUsers (userId: ID!): [User]
+    getUser (id: String!): User
+    listUsers: [User]
   }
 
   type Mutation {
     addUser(user:UserInput!): User
-    editUser(user:UserInput!): User
-    removeUser(id: ID!): User
+    deleteUser(id: String!): Boolean!
+    editUser(filter:UserInput!, user:UserInput!): Boolean!
   }
 `;

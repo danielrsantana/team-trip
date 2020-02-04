@@ -1,6 +1,6 @@
 export default `
   type Expense {
-    id: ID
+    _id: ID
     assignedUserId: String
     isShared: Boolean
     categoryId: String
@@ -15,7 +15,7 @@ export default `
   }
 
   input ExpenseInput {
-    id: ID
+    id: String
     assignedUserId: String
     isShared: Boolean
     categoryId: String
@@ -30,13 +30,13 @@ export default `
   }
 
   type Query {
-    getExpense (id: ID!): Expense
-    listExpenses (tripId: ID!): [Expense]
+    getExpense (id: String!): Expense
+    listExpenses (tripId: String!): [Expense]
   }
 
   type Mutation {
     addExpense(expense:ExpenseInput!): Expense
-    editExpense(expense:ExpenseInput!): Expense
-    removeExpense(id: ID!): Expense
+    deleteExpense(id: String!): Boolean!
+    editExpense(filter:ExpenseInput!, expense:ExpenseInput!): Boolean!
   }
 `;

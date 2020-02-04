@@ -1,6 +1,6 @@
 export default `
   type Trip {
-    id: ID
+    _id: ID
     budget: String
     description: String
     endDate: String
@@ -13,7 +13,7 @@ export default `
   }
 
   input TripInput {
-    id: ID
+    id: String
     budget: String
     description: String
     endDate: String
@@ -26,13 +26,13 @@ export default `
   }
 
   type Query {
-    getTrip (id: ID!): Trip
-    listTrips (userId: ID!): [Trip]
+    getTrip (id: String!): Trip
+    listTrips (userId: String!): [Trip]
   }
 
   type Mutation {
     addTrip(trip:TripInput!): Trip
-    editTrip(trip:TripInput!): Trip
-    removeTrip(id: ID!): Trip
+    deleteTrip(id: String!): Boolean!
+    editTrip(filter:TripInput!, trip:TripInput!): Boolean!
   }
 `;
