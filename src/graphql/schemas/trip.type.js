@@ -26,13 +26,13 @@ export default `
   }
 
   type Query {
-    getTrip (id: String!): Trip
-    listTrips (userId: String!): [Trip]
+    getTrip (token:String!, id: String!): Trip
+    listTrips (token:String!, userId: String!): [Trip]
   }
 
   type Mutation {
-    addTrip(trip:TripInput!): Trip
-    deleteTrip(id: String!): Boolean!
-    editTrip(filter:TripInput!, trip:TripInput!): Boolean!
+    addTrip(token:String!, trip:TripInput!): Trip
+    deleteTrip(token:String!, id: String!): Boolean!
+    editTrip(token:String!, filter:TripInput!, trip:TripInput!): Boolean!
   }
 `;

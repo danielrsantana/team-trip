@@ -30,13 +30,13 @@ export default `
   }
 
   type Query {
-    getExpense (id: String!): Expense
-    listExpenses (tripId: String!): [Expense]
+    getExpense (token:String!, id: String!): Expense
+    listExpenses (token:String!, tripId: String!): [Expense]
   }
 
   type Mutation {
-    addExpense(expense:ExpenseInput!): Expense
-    deleteExpense(id: String!): Boolean!
-    editExpense(filter:ExpenseInput!, expense:ExpenseInput!): Boolean!
+    addExpense(token:String!, expense:ExpenseInput!): Expense
+    deleteExpense(token:String!, id: String!): Boolean!
+    editExpense(token:String!, filter:ExpenseInput!, expense:ExpenseInput!): Boolean!
   }
 `;

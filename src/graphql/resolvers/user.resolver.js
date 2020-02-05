@@ -3,22 +3,22 @@ const USER_COLLECTION = 'user';
 
 export default {
   addUser: params => {
-    return TeamTripDb.addToCollection(USER_COLLECTION, params.item);
+    return TeamTripDb.addToCollection(USER_COLLECTION, params);
   },
 
-  deleteUser: item => {
-    return TeamTripDb.deleteOnCollection(USER_COLLECTION, item);
+  deleteUser: params => {
+    return TeamTripDb.deleteOnCollection(USER_COLLECTION, params);
   },
 
   editUser: params => {
-    return TeamTripDb.editOnCollection(USER_COLLECTION, params.filter, params.item);
+    return TeamTripDb.editOnCollection(USER_COLLECTION, params);
   },
 
-  getUser: async filter => {
-    return TeamTripDb.findOnCollection(USER_COLLECTION, filter);
+  getUser: async params => {
+    return TeamTripDb.findOnCollection(USER_COLLECTION, params);
   },
 
-  listUsers: async () => {
-    return TeamTripDb.listOnCollection(USER_COLLECTION);
+  listUsers: async params => {
+    return TeamTripDb.listOnCollection(USER_COLLECTION, params);
   },
 };

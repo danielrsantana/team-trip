@@ -26,13 +26,13 @@ export default `
   }
 
   type Query {
-    getCredit (id: String!): Credit
-    listCredits (tripId: String!): [Credit]
+    getCredit (token:String!, id: String!): Credit
+    listCredits (token:String!, tripId: String!): [Credit]
   }
 
   type Mutation {
-    addCredit(credit:CreditInput!): Credit
-    deleteCredit(id: String!): Boolean!
-    editCredit(filter:CreditInput!, credit:CreditInput!): Boolean!
+    addCredit(token:String!, credit:CreditInput!): Credit
+    deleteCredit(token:String!, id: String!): Boolean!
+    editCredit(token:String!, filter:CreditInput!, credit:CreditInput!): Boolean!
   }
 `;

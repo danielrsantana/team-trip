@@ -3,22 +3,22 @@ const CREDIT_COLLECTION = 'credit';
 
 export default {
   addCredit: params => {
-    return TeamTripDb.addToCollection(CREDIT_COLLECTION, params.item);
+    return TeamTripDb.addToCollection(CREDIT_COLLECTION, params);
   },
 
-  deleteCredit: item => {
-    return TeamTripDb.deleteOnCollection(CREDIT_COLLECTION, item);
+  deleteCredit: params => {
+    return TeamTripDb.deleteOnCollection(CREDIT_COLLECTION, params);
   },
 
   editCredit: params => {
-    return TeamTripDb.editOnCollection(CREDIT_COLLECTION, params.filter, params.item);
+    return TeamTripDb.editOnCollection(CREDIT_COLLECTION, params);
   },
 
-  getCredit: async filter => {
-    return TeamTripDb.findOnCollection(CREDIT_COLLECTION, filter);
+  getCredit: async params => {
+    return TeamTripDb.findOnCollection(CREDIT_COLLECTION, params);
   },
 
-  listCredits: async () => {
-    return TeamTripDb.listOnCollection(CREDIT_COLLECTION);
+  listCredits: async params => {
+    return TeamTripDb.listOnCollection(CREDIT_COLLECTION, params);
   },
 };

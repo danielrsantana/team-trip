@@ -3,22 +3,22 @@ const TRIP_COLLECTION = 'trip';
 
 export default {
   addTrip: params => {
-    return TeamTripDb.addToCollection(TRIP_COLLECTION, params.item);
+    return TeamTripDb.addToCollection(TRIP_COLLECTION, param);
   },
 
-  deleteTrip: item => {
-    return TeamTripDb.deleteOnCollection(TRIP_COLLECTION, item);
+  deleteTrip: params => {
+    return TeamTripDb.deleteOnCollection(TRIP_COLLECTION, params);
   },
 
   editTrip: params => {
-    return TeamTripDb.editOnCollection(TRIP_COLLECTION, params.filter, params.item);
+    return TeamTripDb.editOnCollection(TRIP_COLLECTION, params);
   },
 
-  getTrip: async filter => {
-    return TeamTripDb.findOnCollection(TRIP_COLLECTION, filter);
+  getTrip: async params => {
+    return TeamTripDb.findOnCollection(TRIP_COLLECTION, params);
   },
 
-  listTrips: async () => {
-    return TeamTripDb.listOnCollection(TRIP_COLLECTION);
+  listTrips: async params => {
+    return TeamTripDb.listOnCollection(TRIP_COLLECTION, params);
   },
 };

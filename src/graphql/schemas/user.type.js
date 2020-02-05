@@ -16,13 +16,13 @@ export default `
   }
 
   type Query {
-    getUser (id: String!): User
-    listUsers: [User]
+    getUser (token:String!, id: String!): User
+    listUsers (token:String!): [User]
   }
 
   type Mutation {
-    addUser(user:UserInput!): User
-    deleteUser(id: String!): Boolean!
-    editUser(filter:UserInput!, user:UserInput!): Boolean!
+    addUser(token:String!, user:UserInput!): User
+    deleteUser(token:String!, id: String!): Boolean!
+    editUser(token:String!, filter:UserInput!, user:UserInput!): Boolean!
   }
 `;

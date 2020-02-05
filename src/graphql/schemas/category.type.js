@@ -14,13 +14,13 @@ export default `
   }
 
   type Query {
-    getCategory (id: String!): Category
-    listCategories: [Category]
+    getCategory (token:String!, id: String!): Category
+    listCategories (token:String!): [Category]
   }
 
   type Mutation {
-    addCategory(item:CategoryInput!): Category
-    deleteCategory(id: String!): Boolean!
-    editCategory(filter:CategoryInput!, item:CategoryInput!):  Boolean!
+    addCategory(token:String!, item:CategoryInput!): Category
+    deleteCategory(token:String!, id: String!): Boolean!
+    editCategory(token:String!, filter:CategoryInput!, item:CategoryInput!):  Boolean!
   }
 `;

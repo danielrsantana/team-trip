@@ -21,40 +21,71 @@ export const TeamTripDb = {
     return entry;
   },
 
-  addToCollection: (collectionName, item) => {
-    return TeamTripDb.getDbCollection(collectionName).then(collection => {
-      return collection.insertOne(TeamTripDb.mapToDbEntry(item)).then(result => {
-        item.id = result.insertedId;
-        return item;
+  validateToken: token => {
+    if (!token || token.length !== 24) {
+      TeamTripDb.throwUnautorizedException();
+    }
+
+    return TeamTripDb.getDbCollection('user').then(collection => {
+      return collection.findOne({ _id: ObjectID(token) }).then(result => {
+        if (result && result._id.toString() === token.toString()) {
+          return true;
+        } else {
+          TeamTripDb.throwUnautorizedException();
+        }
       });
     });
   },
 
-  editOnCollection: (collectionName, filter, item) => {
-    return TeamTripDb.getDbCollection(collectionName).then(collection => {
-      return collection.updateOne(TeamTripDb.mapToDbEntry(filter), [{ $set: item }]).then(result => {
-        return result.matchedCount === 1;
+  throwUnautorizedException: () => {
+    throw 'Unautorized Request';
+  },
+
+  addToCollection: (collectionName, params) => {
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.insertOne(TeamTripDb.mapToDbEntry(params.item)).then(result => {
+          item.id = result.insertedId;
+          return item;
+        });
       });
     });
   },
 
-  deleteOnCollection: (collectionName, item) => {
-    return TeamTripDb.getDbCollection(collectionName).then(collection => {
-      return collection.deleteOne(TeamTripDb.mapToDbEntry(item)).then(result => {
-        return result.deletedCount === 1;
+  editOnCollection: (collectionName, params) => {
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.updateOne(TeamTripDb.mapToDbEntry(params.filter), [{ $set: params.item }]).then(result => {
+          return result.matchedCount === 1;
+        });
       });
     });
   },
 
-  findOnCollection: (collectionName, item) => {
-    return TeamTripDb.getDbCollection(collectionName).then(collection => {
-      return collection.findOne(TeamTripDb.mapToDbEntry(item));
+  deleteOnCollection: (collectionName, params) => {
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.deleteOne(TeamTripDb.mapToDbEntry(params.item)).then(result => {
+          return result.deletedCount === 1;
+        });
+      });
     });
   },
 
-  listOnCollection: collectionName => {
-    return TeamTripDb.getDbCollection(collectionName).then(collection => {
-      return collection.find().toArray();
+  findOnCollection: (collectionName, params) => {
+    console.log(params);
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.findOne(TeamTripDb.mapToDbEntry({ id: params.id }));
+      });
+    });
+  },
+
+  listOnCollection: (collectionName, params) => {
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.find().toArray();
+      });
     });
   },
 };
