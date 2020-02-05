@@ -12,14 +12,6 @@ express()
       graphiql: true,
     }),
   )
-  .listen(4000, () => {
-    console.log('Running server on port localhost:4000');
+  .listen(process.env.PORT || 4000, () => {
+    console.log(`Server started on port: ${process.env.PORT || 3000}`);
   });
-
-/* next steps:
-1. Finish developing Graphql Resolvers
-2. Install mongoose
-3. Implement mongodb queries
-
-reference: https://dev.to/alvarojsnish/graphql-mongodb-the-easy-way-ngc
-*/
