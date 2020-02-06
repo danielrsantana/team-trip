@@ -72,11 +72,18 @@ export const TeamTripDb = {
     });
   },
 
-  findOnCollection: (collectionName, params) => {
-    console.log(params);
+  findOnCollectionByIdBy: (collectionName, params) => {
     return TeamTripDb.validateToken(params.token).then(result => {
       return TeamTripDb.getDbCollection(collectionName).then(collection => {
         return collection.findOne(TeamTripDb.mapToDbEntry({ id: params.id }));
+      });
+    });
+  },
+
+  findOnCollection: (collectionName, params) => {
+    return TeamTripDb.validateToken(params.token).then(result => {
+      return TeamTripDb.getDbCollection(collectionName).then(collection => {
+        return collection.findOne(TeamTripDb.mapToDbEntry(params.filter));
       });
     });
   },

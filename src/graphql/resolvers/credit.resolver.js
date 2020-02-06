@@ -15,7 +15,7 @@ export default {
   },
 
   getCredit: async params => {
-    return TeamTripDb.findOnCollection(CREDIT_COLLECTION, params);
+    return TeamTripDb.findOnCollectionById(CREDIT_COLLECTION, params);
   },
 
   listCredits: async params => {

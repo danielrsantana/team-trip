@@ -15,7 +15,7 @@ export default {
   },
 
   getExpense: async params => {
-    return TeamTripDb.findOnCollection(EXPENSE_COLLECTION, params);
+    return TeamTripDb.findOnCollectionById(EXPENSE_COLLECTION, params);
   },
 
   listExpenses: async params => {

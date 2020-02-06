@@ -16,6 +16,7 @@ export default `
   }
 
   type Query {
+    authenticate (token:String!, filter: UserInput!): User
     getUser (token:String!, id: String!): User
     listUsers (token:String!): [User]
   }

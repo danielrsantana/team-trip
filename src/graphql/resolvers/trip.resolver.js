@@ -15,7 +15,7 @@ export default {
   },
 
   getTrip: async params => {
-    return TeamTripDb.findOnCollection(TRIP_COLLECTION, params);
+    return TeamTripDb.findOnCollectionById(TRIP_COLLECTION, params);
   },
 
   listTrips: async params => {

@@ -15,7 +15,7 @@ export default {
   },
 
   getCategory: async params => {
-    return TeamTripDb.findOnCollection(CATEGORY_COLLECTION, params);
+    return TeamTripDb.findOnCollectionById(CATEGORY_COLLECTION, params);
   },
 
   listCategories: async params => {

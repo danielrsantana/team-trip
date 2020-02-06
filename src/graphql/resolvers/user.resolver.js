@@ -6,6 +6,10 @@ export default {
     return TeamTripDb.addToCollection(USER_COLLECTION, params);
   },
 
+  authenticate: async params => {
+    return TeamTripDb.findOnCollection(USER_COLLECTION, params);
+  },
+
   deleteUser: params => {
     return TeamTripDb.deleteOnCollection(USER_COLLECTION, params);
   },
@@ -15,7 +19,7 @@ export default {
   },
 
   getUser: async params => {
-    return TeamTripDb.findOnCollection(USER_COLLECTION, params);
+    return TeamTripDb.findOnCollectionById(USER_COLLECTION, params);
   },
 
   listUsers: async params => {
